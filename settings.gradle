@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'NFR Products FTC-Biobuzz StarterBot'
+
+include ':FtcRobotController'
+include ':TeamCode'
