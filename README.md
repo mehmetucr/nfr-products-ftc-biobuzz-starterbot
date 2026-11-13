@@ -61,6 +61,20 @@ The conversion is `wheel RPM = ticks per second × 60 / (ticks per motor revolut
 
 The Driver Station displays measured and target speed on the **Shooter RPM** and **Intake teker RPM (olculen / hedef)** lines. For example, `483 / 500` means the intake wheel is turning at 483 RPM with a target of 500 RPM.
 
+### Enter your motor and gearbox ratios
+
+Open [RobotSettings.java](TeamCode/src/main/java/org/firstinspires/ftc/teamcode/RobotSettings.java) and edit the constants for the mechanism you changed.
+
+| Mechanism | Total ratio (motor turns per wheel turn) | Encoder ticks per motor shaft turn |
+|---|---|---|
+| Shooter | `MOTOR_REVS_PER_WHEEL_REV` | `ENCODER_TICKS_PER_MOTOR_REV` |
+| Intake and feeder | `INTAKE_MOTOR_REVS_PER_WHEEL_REV` | `INTAKE_ENCODER_TICKS_PER_MOTOR_REV` |
+
+1. Find the actual gearbox ratio in the manufacturer's specifications. Enter the number of **motor shaft turns for one wheel turn**. A direct drive is `1.0`. A 20:1 gearbox driving the wheel directly is `20.0`. For the REV UltraPlanetary cartridge labeled 5:1, enter `68.0 / 13.0`. Use decimal literals so Java keeps the fractional part. [REV cartridge ratios](https://docs.revrobotics.com/rev-crossover-products/ultraplanetary/cartridge-details)
+2. Multiply the gearbox ratio by any external gear or belt ratio. For a toothed drive, divide the driven gear or pulley tooth count by the driving tooth count. For example, if the 68:13 gearbox drives a 36-tooth pulley from an 18-tooth pulley, use `(68.0 / 13.0) * (36.0 / 18.0)` for `INTAKE_MOTOR_REVS_PER_WHEEL_REV`. [REV encoder and gearing guide](https://docs.revrobotics.com/duo-control/hello-robot-java/part-3/autonomous-navigation-onbot/converting-encoder-ticks-to-a-distance)
+3. Enter encoder ticks per **motor shaft revolution before reduction** in the matching tick constant. For a REV HD Hex motor, use `28`. If your datasheet gives ticks per gearbox output revolution, divide that count by the gearbox ratio to get ticks per motor shaft revolution. This keeps the gearbox reduction from being counted twice.
+4. Reinstall with **Run** in Android Studio. Test without balls and check the wheel RPM on the Driver Station. The RPM targets in the table above refer to the wheel after all reductions.
+
 ## 5. Correct motor directions and calibrate the gate
 
 Raise the robot so the drive wheels are off the ground. Test without balls, keep hands clear of moving parts, and use brief commands. Both wheels should drive the robot forward when you push the left stick forward. The intake should pull balls in, and the shooter should send them toward the exit. If a component moves the wrong way, switch its setting from `true` to `false` or from `false` to `true`, then reinstall the code.
