@@ -2,6 +2,8 @@
 
 An **FTC SDK 12.0 Java project for Android Studio** with two-motor tank drive, ball collection, and an automatic shot sequence. The robot uses one Control Hub, four motors, and one gate servo. The shooter and intake use encoder feedback to regulate their speed.
 
+[Watch the KABOOM StarterBot reveal on Instagram](https://www.instagram.com/nfr.products/reel/DfersTBRnNM/)
+
 ## 1. Download and install on the Control Hub
 
 1. Open the [GitHub repository](https://github.com/mehmetucr/nfr-products-ftc-biobuzz-starterbot), select **Code → Download ZIP**, and extract the archive. If you use Git, run `git clone https://github.com/mehmetucr/nfr-products-ftc-biobuzz-starterbot.git`. [GitHub download instructions](https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives)
